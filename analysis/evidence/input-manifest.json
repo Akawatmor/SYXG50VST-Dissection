@@ -1,0 +1,47 @@
+[
+  {
+    "path": "dll/legacy/S-YXG50.dll",
+    "size": 634880,
+    "sha256": "0a34eea43c56d2776c212a2378046437b14c1a710cd72efd7b02d0d1cf7cea5d"
+  },
+  {
+    "path": "dll/legacy/S-YXG50.exe",
+    "size": 761856,
+    "sha256": "cbc566afb1d3297c6431258935cd8f0f439392795f28023d814404c30017a4b4"
+  },
+  {
+    "path": "dll/legacy/S-YXG50.set",
+    "size": 42,
+    "sha256": "13c9ff90f19792c614270594255017f13874ff819db04e3fad123418bdc4697d"
+  },
+  {
+    "path": "dll/legacy/sxgbin41.tbl",
+    "size": 145014,
+    "sha256": "ee672326528fd4b7b5687c2776f9773e636593f10ab496941d289c407267cd65"
+  },
+  {
+    "path": "dll/legacy/sxgbnw6l.tbl",
+    "size": 716608,
+    "sha256": "d63746f591ba0d4ed281211adf8824361231bf5c922d9e4b3c78ca084bc96be8"
+  },
+  {
+    "path": "dll/legacy/sxgdat6l.tbl",
+    "size": 11723868,
+    "sha256": "94196d753b601453943d32cd29759fcb54e9f8bccd373c30548bb6935595a3b1"
+  },
+  {
+    "path": "dll/legacy/Sxgwave4.tbl",
+    "size": 4299476,
+    "sha256": "1619a008c1ec6f9ef7e67ab0466c57b0a3f894b8b3ac653b8d41057af8c4fffc"
+  },
+  {
+    "path": "dll/veg/syxg50.dll",
+    "size": 5070848,
+    "sha256": "2f81ad9fd3fea46a950ab47486d5af721353989f54c67a6d731e29445d0f210d"
+  },
+  {
+    "path": "dll/veg/syxg50.exe",
+    "size": 761856,
+    "sha256": "cbc566afb1d3297c6431258935cd8f0f439392795f28023d814404c30017a4b4"
+  }
+]

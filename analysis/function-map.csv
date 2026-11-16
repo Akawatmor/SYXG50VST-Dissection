@@ -1,0 +1,33 @@
+﻿Analyst-assigned function,Legacy RVA,Evidence / notes
+Export main,0x3610,อ่าน export และเรียกจริงจาก host; ตรวจ host version ก่อนสร้าง object
+Derived plugin constructor,0x3280,entry เรียกตำแหน่ง 0x3274 ซึ่งมี NOP นำหน้า; ตัว constructor เริ่มที่ 0x3280
+Base plugin constructor,0x2840,สร้าง VST wrapper; object size ที่ entry จองคือ 0x104
+Derived initialization,0x32D0,entry เรียกผ่าน plugin vtable slot +0x210; ต่อไป 0x2920 และส่วน editor
+Engine adapter setup,0x2920,"สร้าง adapter ขนาด 0x58, เก็บที่ plugin object +0xB0, สร้าง scratch buffers"
+Adapter constructor,0x30280,ตั้ง vtable RVA 0x4E110
+Adapter init / core creation path,0x30330,"เรียกระบบตั้งค่า, สร้าง core, โหลด bank และเรียก reset"
+Bank acquisition,0x32970,"เส้นทาง legacy อ่านค่าจาก INI, resolve ชื่อไฟล์, โหลดสอง bank, reference count ใน global"
+Raw file loader,0x32AE0,เส้นทาง CreateFile/ReadFile สำหรับข้อมูล bank
+VST dispatcher trampoline,0x1000,pointer ที่อ่านจาก AEffect จริง; ส่งต่อ virtual dispatcher
+Extended dispatcher,0x1A90,opcode 25 ส่งต่อไป processEvents slot +0xC8
+Queue VST events,0x3260,"เก็บ pointer VstEvents ที่ plugin object +0xE0, ไม่ได้คัดลอก events ในฟังก์ชันนี้"
+Set sample rate,0x2DA0,plugin slot +0x4C; adapter 0x30580 → core state setter 0x17F30
+Set block size,0x16D0,plugin slot +0x50; เก็บค่า host block size; render wrapper แบ่งทำงานภายในเป็น 128 frames
+Resume / suspend,0x33A0 / 0x3380,plugin slots +0x58 / +0x54; wrapper reset/ตั้งค่า และ editor notification
+process trampoline,0x10A0,pointer AEffect ที่อ่านจริง → plugin slot +0x10 → 0x2E90
+processReplacing trampoline,0x10C0,pointer AEffect ที่อ่านจริง → plugin slot +0x14 → 0x2EB0
+Shared render wrapper,0x2ED0,"จัดการ events, tick 10 ms, render quantum 128, buffering สำหรับบล็อกขนาดอื่น"
+Adapter packed MIDI,0x305F0,adapter slot +0x08 → core slot +0x10
+Core packed MIDI decoder,0x3700,แยก status/channel/data bytes → core slot +0x17C
+Channel MIDI dispatcher,0x7560,core slot +0x17C; dispatch table ที่ RVA 0x41BB0
+Note Off branch,0xB620,table index 0 ของ status high nibble 0x8 → 0xB640 → 0xB6F0
+Note On branch,0xB670,table index 1 ของ status high nibble 0x9 → 0xB690 → 0xB770
+Adapter SysEx,0x30630,adapter slot +0x0C → core byte stream parser 0x3790; ยังไม่ได้ทดสอบ SysEx
+Adapter periodic tick,0x30670,adapter slot +0x10 → core 0x3810; wrapper เรียกตามช่วงสะสม 10 ms
+Adapter reset,0x306A0,adapter slot +0x14 → embedded state reset 0x17750
+Adapter audio render,0x30710,adapter slot +0x18; เส้นทางที่ตรวจพบส่งต่อ embedded state core+4
+Core render bridges,0x17300 / 0x17310,ส่งต่อ 0x18150 / 0x181A0 สำหรับ accumulate/replacing
+Internal render,0x18150 / 0x181A0,"clear workspace, call 0x18680, 0x18330, แล้ว output bridges"
+Output bridges,0x18530 / 0x18540,ส่งต่อ 0x2FCD0 / 0x2FD30; ยังไม่ได้อธิบาย DSP ทุกขั้น
+Plugin destructors,0x32C0 → 0x28A0,effClose trampoline เรียก virtual destructor และคืน object
+Adapter destructor,0x302B0,"cleanup embedded core ที่ 0x17DC0, คืน memory, release banks 0x32BC0"

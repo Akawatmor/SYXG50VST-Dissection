@@ -1,0 +1,611 @@
+{
+  "scope": "Offline original DLL reference; no ported engine",
+  "verification": {
+    "input_files_unchanged": true,
+    "silence_is_exact_zero": true,
+    "note_is_audible": true,
+    "three_fresh_runs_bit_identical": true,
+    "note_off_changes_tail": true,
+    "all_pcm_finite_and_correct_length": true
+  },
+  "host_source_sha256": "16bbeede38f36d2b5543b9ba1a96a6984d9a995ff34ce7e6a8aeed33dd83b391",
+  "host_exe_sha256": "460dc1ea0f8ad95f7318b72771fdb5044c8441736b5948c16de11996135c501b",
+  "input_manifest": {
+    "dll/legacy/S-YXG50.dll": {
+      "size": 634880,
+      "sha256": "0a34eea43c56d2776c212a2378046437b14c1a710cd72efd7b02d0d1cf7cea5d"
+    },
+    "dll/legacy/S-YXG50.exe": {
+      "size": 761856,
+      "sha256": "cbc566afb1d3297c6431258935cd8f0f439392795f28023d814404c30017a4b4"
+    },
+    "dll/legacy/S-YXG50.set": {
+      "size": 42,
+      "sha256": "13c9ff90f19792c614270594255017f13874ff819db04e3fad123418bdc4697d"
+    },
+    "dll/legacy/sxgbin41.tbl": {
+      "size": 145014,
+      "sha256": "ee672326528fd4b7b5687c2776f9773e636593f10ab496941d289c407267cd65"
+    },
+    "dll/legacy/sxgbnw6l.tbl": {
+      "size": 716608,
+      "sha256": "d63746f591ba0d4ed281211adf8824361231bf5c922d9e4b3c78ca084bc96be8"
+    },
+    "dll/legacy/sxgdat6l.tbl": {
+      "size": 11723868,
+      "sha256": "94196d753b601453943d32cd29759fcb54e9f8bccd373c30548bb6935595a3b1"
+    },
+    "dll/legacy/Sxgwave4.tbl": {
+      "size": 4299476,
+      "sha256": "1619a008c1ec6f9ef7e67ab0466c57b0a3f894b8b3ac653b8d41057af8c4fffc"
+    },
+    "dll/veg/syxg50.dll": {
+      "size": 5070848,
+      "sha256": "2f81ad9fd3fea46a950ab47486d5af721353989f54c67a6d731e29445d0f210d"
+    },
+    "dll/veg/syxg50.exe": {
+      "size": 761856,
+      "sha256": "cbc566afb1d3297c6431258935cd8f0f439392795f28023d814404c30017a4b4"
+    }
+  },
+  "cases": {
+    "legacy-note-a": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-note-b": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-note-c": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-silence": {
+      "variant": "legacy",
+      "mode": "silence",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": null,
+      "frames": 176400,
+      "pcm_sha256": "2e67334c46e423215fb7d24e455da3a34c3576bd83757b6701c4c7863ca834d1",
+      "wav_sha256": "82cd76909632e6466d689c761b142414e5cd959206175191c094c4f36fbf0e57",
+      "peak": 0.0,
+      "rms": 0.0,
+      "first_audible_frame_threshold_1e_7": null,
+      "last_audible_frame_threshold_1e_7": null,
+      "tail_rms_2_to_4_seconds": 0.0,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-hold": {
+      "variant": "legacy",
+      "mode": "hold",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": null,
+      "frames": 176400,
+      "pcm_sha256": "4e0013e532ce957ea47680433e600e0878b201c098901e90d0144b81c0731dd3",
+      "wav_sha256": "11751aec1eeca16d9623fb31a0e0e5b5d46444ad89ce5304c2a43d1c9773e46a",
+      "peak": 0.1344653069972992,
+      "rms": 0.02002568529698789,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 0.006532719484377393,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-process": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "process",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "febc6f187d579b507434dd31a86a5f7cc1ac19c5ee64f65b87092426c02d47fa",
+      "wav_sha256": "53ae36458f3b90b8d1688a952e806bf333569f5e93f31241cc2463ea8b0940b7",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-block64": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 64,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-block128": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 128,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-block512": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 512,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "5814864729f58dab66cf3769a1dbfdc6624c00d06e0c3663fe218f492e4d6131",
+      "wav_sha256": "a9815425de15956d3dbe0aa9e17b9bd178cfdb1197426bd47b5d6c9cabc724d4",
+      "peak": 0.13447114825248718,
+      "rms": 0.01801415762563104,
+      "first_audible_frame_threshold_1e_7": 10890,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.277987439742994e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-block257": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 257,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "52cbf64fcb9736e05901163e8ada15e423b0295d0cc69407ab3a87cf87315e2b",
+      "wav_sha256": "d04346ea9ba23899925eabd354ed9abf29eacc646c9649836fb35c58bb1c1692",
+      "peak": 0.13447114825248718,
+      "rms": 0.01802445638852745,
+      "first_audible_frame_threshold_1e_7": 10890,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.32791351103979e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-offset64": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 64,
+      "callback": "replacing",
+      "note_on_sample": 11072,
+      "note_off_sample": 55104,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-offset127": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 127,
+      "callback": "replacing",
+      "note_on_sample": 11135,
+      "note_off_sample": 55167,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-offset128": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 128,
+      "callback": "replacing",
+      "note_on_sample": 11136,
+      "note_off_sample": 55168,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-velocity40": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 40,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "ea45eef3a811d7d25b6f2c89799861f5e3fa4336f51da9a9a295f52b6a3e5f55",
+      "wav_sha256": "9c6f2824fef157dec7b3e59f34f8d2b3750f912ca5848eb6f15f5ecf20a05677",
+      "peak": 0.02088415063917637,
+      "rms": 0.0028921257408918567,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 169211,
+      "tail_rms_2_to_4_seconds": 1.4115349800435782e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-note72": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 72,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "8bba71220091c178b003a7b95072e408eef21a19ecab49ae6959a497fb8ac236",
+      "wav_sha256": "9c7e00d4fb1aee73b130121530e0219814b6718a62f7740f30b95832d5f6324a",
+      "peak": 0.12035813927650452,
+      "rms": 0.013699637412561208,
+      "first_audible_frame_threshold_1e_7": 11016,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.538154942722105e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-program40": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 40,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "473949f25ff5a650a092195c0e2e5f2fbdee4685eea734b75c8f82a55d6a27e8",
+      "wav_sha256": "a458aa60f398345608ce2917f50067c68abaf68e3f6b73d0e8de7f95292e7dd4",
+      "peak": 0.14154314994812012,
+      "rms": 0.03086410112523887,
+      "first_audible_frame_threshold_1e_7": 11009,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 0.0003346510329472523,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "legacy-48000": {
+      "variant": "legacy",
+      "mode": "note",
+      "sample_rate": 48000,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11904,
+      "note_off_sample": 59904,
+      "frames": 192000,
+      "pcm_sha256": "060bea6f2411779cc1fc6d061b9b0554f6b998ae62575ef8596822e34d0263fb",
+      "wav_sha256": "7c907fc591629f213f82220978ef34a7ef295ad0ba97ea5e89b4d3e7e09a1bfd",
+      "peak": 0.13480645418167114,
+      "rms": 0.017811376112029736,
+      "first_audible_frame_threshold_1e_7": 11787,
+      "last_audible_frame_threshold_1e_7": 191999,
+      "tail_rms_2_to_4_seconds": 5.227470723412478e-05,
+      "loaded_bank_prefix_matches": {
+        "1": [
+          "dll/legacy/sxgbin41.tbl"
+        ],
+        "2": []
+      }
+    },
+    "veg-note-a": {
+      "variant": "veg",
+      "mode": "note",
+      "sample_rate": 44100,
+      "block_size": 256,
+      "midi_note": 60,
+      "velocity": 100,
+      "program": 0,
+      "event_offset": 0,
+      "callback": "replacing",
+      "note_on_sample": 11008,
+      "note_off_sample": 55040,
+      "frames": 176400,
+      "pcm_sha256": "bf6a14937a191456da51de07373b28e3ae1f6a24f0427dea014dc7a40ecf0f6a",
+      "wav_sha256": "1650b098462b5421b1429ab41fdc36069badcdb4a5c57e7619327c318a85656e",
+      "peak": 0.1344653069972992,
+      "rms": 0.018010920085894062,
+      "first_audible_frame_threshold_1e_7": 11018,
+      "last_audible_frame_threshold_1e_7": 176399,
+      "tail_rms_2_to_4_seconds": 8.347672870201247e-05,
+      "loaded_bank_prefix_matches": {}
+    }
+  },
+  "comparisons": {
+    "legacy-note-a vs legacy-note-b": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-note-c": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-process": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-block64": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-block128": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-block512": {
+      "different_samples": 331020,
+      "max_abs_difference": 0.20776453614234924,
+      "rms_difference": 0.028051699711047703
+    },
+    "legacy-note-a vs legacy-block257": {
+      "different_samples": 331020,
+      "max_abs_difference": 0.20776453614234924,
+      "rms_difference": 0.02805959145262787
+    },
+    "legacy-note-a vs legacy-offset64": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-offset127": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-offset128": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    },
+    "legacy-note-a vs legacy-hold": {
+      "different_samples": 242718,
+      "max_abs_difference": 0.03633157862350345,
+      "rms_difference": 0.00824401884445738
+    },
+    "legacy-note-a vs legacy-velocity40": {
+      "different_samples": 330764,
+      "max_abs_difference": 0.11750023998320103,
+      "rms_difference": 0.015330948478346875
+    },
+    "legacy-note-a vs legacy-note72": {
+      "different_samples": 330768,
+      "max_abs_difference": 0.15507951006293297,
+      "rms_difference": 0.02398502648257723
+    },
+    "legacy-note-a vs legacy-program40": {
+      "different_samples": 330784,
+      "max_abs_difference": 0.20370373129844666,
+      "rms_difference": 0.03695735506607781
+    },
+    "legacy-note-a vs veg-note-a": {
+      "different_samples": 0,
+      "max_abs_difference": 0.0,
+      "rms_difference": 0.0
+    }
+  }
+}
