@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "sixteen_channels": true,
+    "all_128_programs_three_keys": true,
+    "gm_drums_35_to_81": true,
+    "voice_stealing_bounded": true,
+    "sustain_and_release": true,
+    "pan_and_volume": true,
+    "rpn_pitchbend_and_reset": true,
+    "xg_reset_sysex": true,
+    "smf_running_status_and_tempo": true,
+    "smf_format1_tempo_merge": true,
+    "smf_smpte": true,
+    "smf_rejects_malformed_tracks": true,
+    "worklet_ready_editor_telemetry_off": true,
+    "worklet_event_at_sample_37": true,
+    "worklet_variable_block_and_panic": true,
+    "worklet_end_and_optional_telemetry": true
+  },
+  "passed": 16,
+  "wasm_bytes": 39026,
+  "benchmark": {
+    "voices": 128,
+    "audio_seconds": 1,
+    "render_ms": 102.4393,
+    "realtime_factor": 0.1024393,
+    "environment": "Node WASM on this machine; excludes browser scheduling"
+  },
+  "full_dll_audio_fidelity_passed": false
+}

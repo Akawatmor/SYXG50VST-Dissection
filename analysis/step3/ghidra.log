@@ -1,0 +1,261 @@
+2026-11-16 21:44:09 INFO  (LoggingInitialization) Using log config file: jar:file:/C:/Users/PetchAdmin/Downloads/syxg50%20dissection/.tools/ghidra_11.4.3_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-11-16 21:44:09 INFO  (LoggingInitialization) Using log file: .\analysis\step3\ghidra.log  
+2026-11-16 21:44:09 INFO  (Preferences) Loading user preferences: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\preferences  
+2026-11-16 21:44:09 INFO  (ClassSearcher) Searching for classes...  
+2026-11-16 21:44:12 INFO  (ClassSearcher) Class search complete (2616 ms)  
+2026-11-16 21:44:12 INFO  (SSLContextInitializer) Initializing SSL Context  
+2026-11-16 21:44:12 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-11-16 21:44:13 INFO  (SecureRandomFactory) Random Number Generator initialization complete: SHA1PRNG  
+2026-11-16 21:44:13 INFO  (ApplicationTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-11-16 21:44:13 INFO  (FileCacheMaintenanceDaemon) Starting cache cleanup: C:\Users\PetchAdmin\AppData\Local\ghidra\fscache2  
+2026-11-16 21:44:13 INFO  (FileCacheMaintenanceDaemon) Finished cache cleanup, estimated storage used: 0  
+2026-11-16 21:44:14 INFO  (AnalyzeHeadless) Headless startup complete (8319 ms)  
+2026-11-16 21:44:14 INFO  (ClassSearcher) Class searcher loaded 58 extension points (18 false positives)  
+2026-11-16 21:44:14 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\MicrosoftCodeAnalyzer\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\PyGhidra\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Debug\Debugger-rmi-trace\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Base\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\BSim\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\GnuDemangler\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\VersionTracking\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Processors\Atmel\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\FunctionID\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Processors\PIC\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Jython\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\SystemEmulation\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Processors\8051\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Decompiler\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Processors\DATA\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Processors\JVM\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\WildcardAssembler\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\FileFormats\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\SwiftDemangler\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\tools
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Debug\Debugger\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\BytePatterns\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\DecompilerDependent\ghidra_scripts
+    C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\PDB\ghidra_scripts  
+2026-11-16 21:44:14 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-11-16 21:44:14 INFO  (HeadlessAnalyzer) Creating project: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.\analysis\step3\sxg-engine-native  
+2026-11-16 21:44:14 DEBUG (DefaultProjectManager) No tools found; Installing default tools  
+2026-11-16 21:44:14 DEBUG (DefaultProjectManager) 	no recent project directories found  
+2026-11-16 21:44:15 INFO  (DefaultProject) Creating project: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.\analysis\step3\sxg-engine-native  
+2026-11-16 21:44:15 INFO  (HeadlessAnalyzer) REPORT: Processing input files:   
+2026-11-16 21:44:15 INFO  (HeadlessAnalyzer)      project: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.\analysis\step3\sxg-engine-native  
+2026-11-16 21:44:15 INFO  (HeadlessAnalyzer) IMPORTING: file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy/S-YXG50.dll  
+2026-11-16 21:44:20 INFO  (AutoImporter) Using Loader: Portable Executable (PE)  
+2026-11-16 21:44:20 INFO  (AutoImporter) Using Language/Compiler: x86:LE:32:default:windows  
+2026-11-16 21:44:20 INFO  (AutoImporter) Using Library Search Path: [., C:\Windows\SysWOW64, C:\Program Files\Java\jdk-24\bin, C:\Windows\Sun\Java\bin, C:\Windows\system32, C:\Windows, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell, C:\Users\PetchAdmin\.codex\tmp\arg0-windows\codex-arg0w91sS4, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\libheif\libheif\bin, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\jxrlib\jxrlib\bin, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override, C:\Python314\Scripts\, C:\Python314\, C:\Program Files\Common Files\Oracle\Java\javapath, C:\Windows\System32\Wbem, C:\Windows\System32\WindowsPowerShell\v1.0\, C:\Windows\System32\OpenSSH\, C:\Program Files\Git\cmd, C:\Program Files\Amazon\AWSCLIV2\, C:\Users\PetchAdmin\AppData\Local\Microsoft\WindowsApps, C:\Users\PetchAdmin\AppData\Local\Programs\Microsoft VS Code\bin, C:\Users\PetchAdmin\AppData\Local\GitHubDesktop\bin, C:\Users\PetchAdmin\AppData\Roaming\npm, C:\ProgramData\chocolatey\bin, C:\Program Files\Amazon\AWSSAMCLI\bin\, C:\Program Files\Git LFS, C:\gstreamer\1.0\msvc_x86_64\\bin, C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR, C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common, C:\Program Files\PuTTY\, C:\Program Files\OpenSSL-Win64\bin, C:\Program Files\CMake\bin, C:\Program Files\Go\bin, C:\php, C:\Program Files\WireGuard\, C:\Program Files\dotnet\, C:\Encoder dll\PATH, C:\Strawberry\c\bin, C:\Strawberry\perl\site\bin, C:\Strawberry\perl\bin, C:\Encoder dll\rclone-v1.73.2-windows-amd64, C:\Encoder dll\aria2-1.37.0-win-64bit-build1, C:\Program Files\Tailscale\, C:\Program Files (x86)\cloudflared\, C:\Program Files\Cloudflare\Cloudflare WARP\, C:\Encoder dll\untrunc_x64, C:\Encoder dll\qaac\, C:\Encoder dll\ffmpeg\bin\, C:\Encoder dll\wstunnel, C:\Encoder dll\anyflip, C:\ghidra_12.1.3_PUBLIC\support, C:\Encoder dll\sfconvert, C:\Program Files\Coder\bin, C:\Program Files\Oracle\VirtualBox, C:\Program Files\MainConcept\FFmpeg-PlugIns\bin, C:\Encoder dll\dolby\dee, C:\Program Files\nodejs\, C:\ProgramData\miniconda3, C:\Encoder dll\exiftool-13.59_64, C:\Encoder dll\platform-tools, C:\Encoder dll\opus, C:\Encoder dll\wincdu_1.0.3_x64_free, C:\Program Files\PowerShell\7\, C:\Encoder dll\lame, C:\Users\PetchAdmin\AppData\Local\agy\bin, C:\Users\PetchAdmin\.cargo\bin, C:\Program Files\Python313\Scripts\, C:\Program Files\Python313\, C:\Program Files\Docker\Docker\resources\bin, C:\Users\PetchAdmin\go\bin, C:\ProgramData\mingw64\mingw64\bin, C:\tools\msys64, C:\Users\PetchAdmin\AppData\Roaming\cabal\bin, C:\tools\ghc-9.8.2\bin, C:\ghcup\bin, C:\Users\PetchAdmin\.bun\bin, C:\Program Files (x86)\Nmap, C:\Users\PetchAdmin\AppData\Local\Programs\Ollama, C:\Users\PetchAdmin\AppData\Local\Programs\Antigravity\bin, C:\Program Files\GPAC, C:\Users\PetchAdmin\.dotnet\tools, C:\Users\PetchAdmin\AppData\Local\PowerToys\DSCModules\, C:\Users\PetchAdmin\AppData\Local\Programs\Antigravity IDE\bin, C:\Users\PetchAdmin\AppData\Local\Programs\Microsoft VS Code\bin\copilot-shim, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin, C:\Users\PetchAdmin\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd, C:\Program Files\WindowsApps\OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0\app\resources]  
+2026-11-16 21:44:27 WARN  (ExportDataDirectory) Invalid or missing function at 100754dc  
+2026-11-16 21:44:37 WARN  (ExportDataDirectory) Invalid or missing function at 100e31dc  
+2026-11-16 21:44:37 DEBUG (WEVTResourceDataType) Error processing Provider Element.  
+2026-11-16 21:44:41 DEBUG (WEVTResourceDataType) Error processing Provider Element.  
+2026-11-16 21:44:41 INFO  (FileSystemInstanceManager) Removing 82 unused filesystems from cache  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/ffmpeg/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Python313]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Java/jdk-24/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Roaming/npm]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/sfconvert]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/dolby/dee]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Git/cmd]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files (x86)/Nmap]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/MainConcept/FFmpeg-PlugIns/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/PowerShell/7]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/dotnet]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Windows/System32/OpenSSH]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Windows/SysWOW64]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Tailscale]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Strawberry/c/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/untrunc_x64]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/poppler/Library/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/WindowsApps/OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0/app/resources]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/tools/msys64]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/qaac]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/rclone-v1.73.2-windows-amd64]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/anyflip]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Python314]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/CMake/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Windows/System32/wbem]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Amazon/AWSCLIV2]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/gstreamer/1.0/msvc_x86_64/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Coder/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Windows]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Common Files/Oracle/Java/javapath_target_782171]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files (x86)/cloudflared]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/ghcup/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Windows/System32/WindowsPowerShell/v1.0]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/WireGuard]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.codex/tmp/arg0-windows/codex-arg0w91sS4]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Amazon/AWSSAMCLI/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/exiftool-13.59_64]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/lame]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git/cmd]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/ProgramData/chocolatey/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/aria2-1.37.0-win-64bit-build1]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/opus]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/NVIDIA Corporation/NVIDIA App/NvDLISR]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Oracle/VirtualBox]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Strawberry/perl/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/ProgramData/mingw64/mingw64/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Python314/Scripts]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/OpenSSL-Win64/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Git LFS]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Python313/Scripts]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/wincdu_1.0.3_x64_free]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Strawberry/perl/site/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/ghidra_12.1.3_PUBLIC/support]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.bun/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/Programs/Antigravity IDE/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/libheif/libheif/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/Programs/Microsoft VS Code/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/PATH]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/GPAC]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/tools/ghc-9.8.2/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/nodejs]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/Programs/Microsoft VS Code/bin/copilot-shim]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/php]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Cloudflare/Cloudflare WARP]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/wstunnel]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/GitHubDesktop/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Encoder dll/platform-tools]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/jxrlib/jxrlib/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/Go/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/.cargo/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/go/bin]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Windows/System32]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/PowerToys/DSCModules]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Program Files/PuTTY]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/Microsoft/WindowsApps]  
+2026-11-16 21:44:41 DEBUG (FileSystemInstanceManager) Closing unused filesystem [file:///C:/Users/PetchAdmin/AppData/Local/agy/bin]  
+2026-11-16 21:44:41 INFO  (AutoImporter) Additional info:
+Loading file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy/S-YXG50.dll?MD5=d655052366e6312c15ea1a95e7e54ae4...
+------------------------------------------------
+
+Searching 82 paths for library ADVAPI32.DLL...
+Loading file:///C:/Windows/SysWOW64/advapi32.dll?MD5=3ae45ee3ca66486c3747838ebdf9dfc2...
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\advapi32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 82 paths for library COMCTL32.DLL...
+Loading file:///C:/Windows/SysWOW64/comctl32.dll?MD5=a19d57953ec5f48772f24bad3b51dcac...
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\comctl32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 82 paths for library GDI32.DLL...
+Loading file:///C:/Windows/SysWOW64/gdi32.dll?MD5=37002dbb23f87dae9ebd7dd7b5051995...
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\gdi32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 82 paths for library KERNEL32.DLL...
+Loading file:///C:/Windows/SysWOW64/kernel32.dll?MD5=505c80011e47bc0dd833c598919d64c6...
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\kernel32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 82 paths for library USER32.DLL...
+Loading file:///C:/Windows/SysWOW64/user32.dll?MD5=7597f31e467fc6b4be8e2390e761cf9c...
+[user32.dll]: failed to create WEVTResource at 10101a70: Failed to resolve data length for WEVTResource
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\user32.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 82 paths for library VERSION.DLL...
+Loading file:///C:/Windows/SysWOW64/version.dll?MD5=e540ee5a5c515d5c3005f0cd6d133124...
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\version.exports
+Library not saved to project.
+------------------------------------------------
+
+Searching 82 paths for library WINMM.DLL...
+Loading file:///C:/Windows/SysWOW64/winmm.dll?MD5=de35ab1e1f7c3099fe9116e109003f17...
+[winmm.dll]: failed to create WEVTResource at 1002b310: Failed to resolve data length for WEVTResource
+Created exports file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra-config\ghidra\ghidra_11.4.3_PUBLIC\symbols\win32\winmm.exports
+Library not saved to project.
+------------------------------------------------
+
+Applying cached symbols from KERNEL32.DLL
+Applying cached symbols from USER32.DLL
+Applying cached symbols from GDI32.DLL
+Applying cached symbols from ADVAPI32.DLL
+Applying cached symbols from WINMM.DLL
+Applying cached symbols from COMCTL32.DLL
+Applying cached symbols from VERSION.DLL
+Linking the External Programs of 'S-YXG50.dll' to imported libraries...
+  [KERNEL32.DLL] -> not found in project
+  [USER32.DLL] -> not found in project
+  [GDI32.DLL] -> not found in project
+  [ADVAPI32.DLL] -> not found in project
+  [WINMM.DLL] -> not found in project
+  [COMCTL32.DLL] -> not found in project
+  [VERSION.DLL] -> not found in project
+------------------------------------------------
+
+  
+2026-11-16 21:44:41 INFO  (HeadlessAnalyzer) IMPORTING: Loaded 0 additional files  
+2026-11-16 21:44:42 INFO  (HeadlessAnalyzer) ANALYZING all memory and code: file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy/S-YXG50.dll  
+2026-11-16 21:44:42 WARN  (NoReturnFunctionAnalyzer) Ignoring leading '_' chars on no-return name '___raise_securityfailure' specified in file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Base\data\PEFunctionsThatDoNotReturn  
+2026-11-16 21:44:42 WARN  (NoReturnFunctionAnalyzer) Ignoring leading '_' chars on no-return name '___report_rangecheckfailure' specified in file: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Base\data\PEFunctionsThatDoNotReturn  
+2026-11-16 21:44:42 INFO  (PdbUniversalAnalyzer) Skipping PDB processing: missing PDB information in program metadata  
+2026-11-16 21:44:43 INFO  (PackedDatabaseCache) Packed database cache: C:\Users\PetchAdmin\AppData\Local\ghidra\packed-db-cache  
+2026-11-16 21:44:43 DEBUG (PackedDatabaseCache) Caching packed database: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Base\data\typeinfo\win32\windows_vs12_32.gdt  
+2026-11-16 21:44:43 DEBUG (PackedDatabase) Unpacking database C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Base\data\typeinfo\win32\windows_vs12_32.gdt -> C:\Users\PetchAdmin\AppData\Local\ghidra\packed-db-cache\pdbF0EEFB72\db.1.gbf  
+2026-11-16 21:44:43 DEBUG (PackedDatabaseCache) Cache update completed: C:\Users\PetchAdmin\Downloads\syxg50 dissection\.tools\ghidra_11.4.3_PUBLIC\Ghidra\Features\Base\data\typeinfo\win32\windows_vs12_32.gdt  
+2026-11-16 21:45:05 INFO  (ApplyDataArchiveAnalyzer) Applied data type archive: windows_vs12_32  
+2026-11-16 21:45:05 INFO  (ApplyDataArchiveAnalyzer) Applied data type archive: windows_vs12_32  
+2026-11-16 21:45:47 INFO  (AutoAnalysisManager) -----------------------------------------------------
+    ASCII Strings                              0.936 secs
+    Apply Data Archives                        0.500 secs
+    Call Convention ID                         0.013 secs
+    Call-Fixup Installer                       0.093 secs
+    Create Address Tables                      0.221 secs
+    Create Address Tables - One Time           1.106 secs
+    Create Function                            0.584 secs
+    Data Reference                             0.685 secs
+    Decompiler Parameter ID                    8.279 secs
+    Decompiler Switch Analysis                20.819 secs
+    Demangler Microsoft                        0.038 secs
+    Disassemble                                0.962 secs
+    Disassemble Entry Points                   0.212 secs
+    Embedded Media                             0.021 secs
+    External Entry References                  0.000 secs
+    Function ID                                1.618 secs
+    Function Start Pre Search                  0.031 secs
+    Function Start Search                      0.152 secs
+    Function Start Search After Code           0.212 secs
+    Function Start Search After Data           0.068 secs
+    Function Start Search delayed - One Time   0.054 secs
+    Non-Returning Functions - Discovered       0.145 secs
+    Non-Returning Functions - Known            0.014 secs
+    PDB Universal                              0.004 secs
+    Reference                                  0.926 secs
+    Scalar Operand References                  1.262 secs
+    Shared Return Calls                        0.292 secs
+    Stack                                      4.941 secs
+    Subroutine References                      1.559 secs
+    Subroutine References - One Time           0.003 secs
+    Windows x86 PE Exception Handling          3.425 secs
+    Windows x86 PE RTTI Analyzer               0.000 secs
+    Windows x86 Thread Environment Block (TEB) Analyzer     0.020 secs
+    WindowsResourceReference                   9.648 secs
+    X86 Function Callee Purge                  0.139 secs
+    x86 Constant Reference Analyzer            5.724 secs
+-----------------------------------------------------
+     Total Time   64 secs
+-----------------------------------------------------
+  
+2026-11-16 21:45:47 INFO  (HeadlessAnalyzer) REPORT: Analysis succeeded for file: file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy/S-YXG50.dll  
+2026-11-16 21:45:50 INFO  (HeadlessAnalyzer) SCRIPT: C:\Users\PetchAdmin\Downloads\syxg50 dissection\tools\DecompileEngine.java  
+2026-11-16 21:45:56 INFO  (GhidraScript) DecompileEngine.java> Exported 308 functions to C:\Users\PetchAdmin\Downloads\syxg50 dissection\analysis\step3\decompiled  
+2026-11-16 21:45:56 INFO  (HeadlessAnalyzer) ANALYZING changes made by post scripts: file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy/S-YXG50.dll  
+2026-11-16 21:45:56 INFO  (HeadlessAnalyzer) REPORT: Post-analysis succeeded for file: file:///C:/Users/PetchAdmin/Downloads/syxg50 dissection/dll/legacy/S-YXG50.dll  
+2026-11-16 21:45:57 INFO  (HeadlessAnalyzer) REPORT: Save succeeded for: /S-YXG50.dll (sxg-engine-native:/S-YXG50.dll)  
+2026-11-16 21:45:57 INFO  (HeadlessAnalyzer) REPORT: Import succeeded  

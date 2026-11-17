@@ -1,0 +1,2 @@
+layers=1 rate=44100 frames=176400
+layer=0 record=0x1FA0 start=0x30A83A base=0x30ACA8 end=0x30AD14 bytes=1 root=68 flags=0x80

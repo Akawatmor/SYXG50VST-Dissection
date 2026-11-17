@@ -1,0 +1,10 @@
+{
+  "wave_record_offset": 2944,
+  "sample_start": 1435140,
+  "sample_base": 1456244,
+  "sample_end": 1472535,
+  "bytes_per_sample": 1,
+  "root_key": 71,
+  "flags": 128,
+  "step_q15": 17792
+}

@@ -1,0 +1,23 @@
+{
+  "imports": [],
+  "decoded_wave_sha256": "22ea1584608a172a939db96fa13f774cdd392c29e8a17664acc99370e987ae62",
+  "decoded_wave_matches_dll_memory": true,
+  "kernels": {
+    "attack": {
+      "samples_bit_identical_to_original_kernel": true,
+      "position_matches": true,
+      "fraction_matches": true
+    },
+    "-wrap": {
+      "samples_bit_identical_to_original_kernel": true,
+      "position_matches": true,
+      "fraction_matches": true
+    },
+    "-carry": {
+      "samples_bit_identical_to_original_kernel": true,
+      "position_matches": true,
+      "fraction_matches": true
+    }
+  },
+  "envelope_gain_matches_original": true
+}

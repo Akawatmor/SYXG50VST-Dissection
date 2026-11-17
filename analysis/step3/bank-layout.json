@@ -1,0 +1,96 @@
+{
+  "bank_header": "MU50 4MB V2.0",
+  "wave_filename": "SXGWAVE4.TBL",
+  "wave_encoded_size": 4299476,
+  "wave_decoded_sha256": "22ea1584608a172a939db96fa13f774cdd392c29e8a17664acc99370e987ae62",
+  "legacy_runtime_prefix_matches": true,
+  "full_wave_matches_dll_memory": true,
+  "full_parameter_bank_matches_dll_memory": true,
+  "segments": [
+    {
+      "index": 0,
+      "offset": 100,
+      "length": 128
+    },
+    {
+      "index": 1,
+      "offset": 228,
+      "length": 128
+    },
+    {
+      "index": 2,
+      "offset": 356,
+      "length": 128
+    },
+    {
+      "index": 3,
+      "offset": 484,
+      "length": 128
+    },
+    {
+      "index": 4,
+      "offset": 612,
+      "length": 7936
+    },
+    {
+      "index": 5,
+      "offset": 8548,
+      "length": 9360
+    },
+    {
+      "index": 6,
+      "offset": 17908,
+      "length": 174
+    },
+    {
+      "index": 7,
+      "offset": 18082,
+      "length": 128
+    },
+    {
+      "index": 8,
+      "offset": 18210,
+      "length": 128
+    },
+    {
+      "index": 9,
+      "offset": 18338,
+      "length": 128
+    },
+    {
+      "index": 10,
+      "offset": 18466,
+      "length": 128
+    },
+    {
+      "index": 11,
+      "offset": 18594,
+      "length": 6144
+    },
+    {
+      "index": 12,
+      "offset": 24738,
+      "length": 14336
+    },
+    {
+      "index": 13,
+      "offset": 39074,
+      "length": 64298
+    },
+    {
+      "index": 14,
+      "offset": 103372,
+      "length": 23726
+    },
+    {
+      "index": 15,
+      "offset": 127098,
+      "length": 492
+    },
+    {
+      "index": 16,
+      "offset": 127590,
+      "length": 17424
+    }
+  ]
+}

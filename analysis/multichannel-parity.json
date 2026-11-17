@@ -1,0 +1,6 @@
+{
+  "native_wasm_bit_identical": true,
+  "frames": 48000,
+  "events": 16,
+  "pcm_sha256": "e50506ee3d35ffc69e27f9f2400aa2a6e0b4fd63c162740811ef5124d42cf66f"
+}

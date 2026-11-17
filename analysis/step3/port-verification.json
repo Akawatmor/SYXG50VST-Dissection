@@ -1,0 +1,121 @@
+{
+  "checks": {
+    "render_before_init_rejected": true,
+    "analysis_capture_preserves_reference_pcm": true,
+    "init_succeeds": true,
+    "full_wave_matches_original_memory": true,
+    "zero_frames_rejected": true,
+    "oversized_render_rejected": true,
+    "second_channel_supported": true,
+    "invalid_midi_rejected": true,
+    "silence_render_succeeds": true,
+    "silence_is_zero": true,
+    "native_kernel_matches_original": true,
+    "envelope_gain_matches_original": true,
+    "baseline_note_selection_succeeds": true,
+    "baseline_sample_base_matches_live_voice": true,
+    "baseline_loop_length_matches_live_voice": true,
+    "baseline_pitch_step_matches_live_voice": true,
+    "native_wasm_match_all_five_cases": true,
+    "all_original_input_hashes_unchanged": true
+  },
+  "native_kernels": {
+    "attack": {
+      "status": 0,
+      "samples_bit_identical_to_original_kernel": true,
+      "position_matches": true,
+      "fraction_matches": true
+    },
+    "-wrap": {
+      "status": 0,
+      "samples_bit_identical_to_original_kernel": true,
+      "position_matches": true,
+      "fraction_matches": true
+    },
+    "-carry": {
+      "status": 0,
+      "samples_bit_identical_to_original_kernel": true,
+      "position_matches": true,
+      "fraction_matches": true
+    }
+  },
+  "wasm": {
+    "imports": [],
+    "decoded_wave_sha256": "22ea1584608a172a939db96fa13f774cdd392c29e8a17664acc99370e987ae62",
+    "decoded_wave_matches_dll_memory": true,
+    "kernels": {
+      "attack": {
+        "samples_bit_identical_to_original_kernel": true,
+        "position_matches": true,
+        "fraction_matches": true
+      },
+      "-wrap": {
+        "samples_bit_identical_to_original_kernel": true,
+        "position_matches": true,
+        "fraction_matches": true
+      },
+      "-carry": {
+        "samples_bit_identical_to_original_kernel": true,
+        "position_matches": true,
+        "fraction_matches": true
+      }
+    },
+    "envelope_gain_matches_original": true
+  },
+  "audio_cases": {
+    "note60": {
+      "native_wasm_bit_identical": true,
+      "pcm_sha256": "ffb791ccc3a613c21b4c45db8c39f3b84d2a25b802f9417cb339632c5c20c526",
+      "native_rms": 0.00958907150858982,
+      "original_rms": 0.018010920085894062,
+      "original_rms_difference": 0.009684095871383778,
+      "original_max_abs_difference": 0.08876859396696091,
+      "original_bit_identical": false
+    },
+    "note72": {
+      "native_wasm_bit_identical": true,
+      "pcm_sha256": "4875c1c6277676f16737ca14d69bdcbd8fedb3c037fd126ea2d34360045cf88e",
+      "native_rms": 0.006065986416634026,
+      "original_rms": 0.013699637412561208,
+      "original_rms_difference": 0.008068224029091978,
+      "original_max_abs_difference": 0.07487891986966133,
+      "original_bit_identical": false
+    },
+    "velocity40": {
+      "native_wasm_bit_identical": true,
+      "pcm_sha256": "f531c9dc9307361da6bbc2348475d9d14f96cd21b37644f2c3b5b9e4cac5b1cf",
+      "native_rms": 0.0015342514415594651,
+      "original_rms": 0.0028921257408918567,
+      "original_rms_difference": 0.0016476936664055622,
+      "original_max_abs_difference": 0.014126268215477467,
+      "original_bit_identical": false
+    },
+    "program40": {
+      "native_wasm_bit_identical": true,
+      "pcm_sha256": "2c25d60c372b0610ca9464821f794fc9cceee3de559bda15695ae72dd80bb8f0",
+      "native_rms": 0.010456254357753098,
+      "original_rms": 0.03086410112523887,
+      "original_rms_difference": 0.022549860282455363,
+      "original_max_abs_difference": 0.10825806763023138,
+      "original_bit_identical": false
+    },
+    "48000": {
+      "native_wasm_bit_identical": true,
+      "pcm_sha256": "1514802b6a31334e3a36f9206c2dd300d1d2d89c01d8a8947064ec181a9c862c",
+      "native_rms": 0.009615326611459545,
+      "original_rms": 0.017811376112029736,
+      "original_rms_difference": 0.01994381182500056,
+      "original_max_abs_difference": 0.14700456243008375,
+      "original_bit_identical": false
+    }
+  },
+  "full_dll_audio_fidelity_passed": false,
+  "provisional_dsp": [
+    "pitch setup beyond the validated note",
+    "amplifier gain",
+    "amplitude envelope",
+    "filter",
+    "effects",
+    "legacy MIDI scheduling"
+  ]
+}
