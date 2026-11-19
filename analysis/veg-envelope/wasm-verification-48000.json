@@ -1,0 +1,7 @@
+{
+  "sample_rate": 48000,
+  "states": 228900,
+  "all_state_words_bit_identical_to_veg": true,
+  "wasm_imports": [],
+  "integrated_in_renderer": false
+}

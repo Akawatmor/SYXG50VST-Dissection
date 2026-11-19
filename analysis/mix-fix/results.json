@@ -1,0 +1,44 @@
+{
+  "before": {
+    "0": {
+      "wet_difference_to_dry_rms": 0.4097441467105776,
+      "release_tail_rms_150_to_300ms": 0.003285176230382926,
+      "held_last_100ms_rms": 0.02037484558520977
+    },
+    "40": {
+      "wet_difference_to_dry_rms": 0.46543504304147315,
+      "release_tail_rms_150_to_300ms": 0.00343024300576883,
+      "held_last_100ms_rms": 0.02107922084101338
+    },
+    "80": {
+      "wet_difference_to_dry_rms": 0.40609199871095975,
+      "release_tail_rms_150_to_300ms": 0.0067854577757629694,
+      "held_last_100ms_rms": 0.04253064354223767
+    },
+    "mix_peak": 0.127472385764122,
+    "kick_chorus_difference_rms": 0.0011580614800154323,
+    "choked_open_hat_tail_rms": 8.465886005725361e-05,
+    "one_shot_pedal_off_difference_rms": 0.00012610288582700236
+  },
+  "after": {
+    "0": {
+      "wet_difference_to_dry_rms": 0.13420282624714655,
+      "release_tail_rms_150_to_300ms": 0.000421955992275813,
+      "held_last_100ms_rms": 0.02037484558520977
+    },
+    "40": {
+      "wet_difference_to_dry_rms": 0.13993850117520187,
+      "release_tail_rms_150_to_300ms": 0.0004435870087394058,
+      "held_last_100ms_rms": 0.02107922084101338
+    },
+    "80": {
+      "wet_difference_to_dry_rms": 0.1347031981291875,
+      "release_tail_rms_150_to_300ms": 0.0008799146488692772,
+      "held_last_100ms_rms": 0.04253064354223767
+    },
+    "mix_peak": 0.11151450127363205,
+    "kick_chorus_difference_rms": 9.460518774963896e-05,
+    "choked_open_hat_tail_rms": 2.5940667961451333e-08,
+    "one_shot_pedal_off_difference_rms": 0.0
+  }
+}

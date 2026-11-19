@@ -1,0 +1,10 @@
+{
+  "source": "C:/Users/PetchAdmin/Downloads/50938.mid",
+  "sha256": "4d2805badb819e03ee9054ae934528af915eabc20366a65bb81e97a928759b2d",
+  "rate": 44100,
+  "duration": 158.24999999999974,
+  "events": 9887,
+  "format": 1,
+  "tracks": 17,
+  "scheduling": "Original VST wrapper; block 128; input deltaFrames preserved"
+}

@@ -18,6 +18,8 @@
 
 ## ความสามารถ
 
+ฉบับปรับสมดุลเสียง: ลดระดับ wet bus/return, เพิ่ม high-frequency damping ใน reverb และ fractional delay ใน chorus ใช้ค่า send กลองรายชิ้นจาก bank, ให้ exclusive-group choke ลดเสียงเร็ว และแก้ CC64 Off ที่เคยทำให้กลองซึ่งไม่รับ Note Off เข้า release โดยไม่ตั้งใจ ค่า release ทั่วไปปรับ half-life จาก 80 เป็น 35 ms ส่วน choke เป็น 3 ms; ค่านี้ยังเป็นการปรับชั่วคราว ไม่ใช่ AEG ที่กู้ครบจาก DLL ดู `analysis/mix-fix/REPORT.md`
+
 | ส่วน | สถานะ |
 |---|---|
 | AudioWorklet | Stereo float32, จัด event ตรงตำแหน่ง sample, รองรับขนาด callback ที่เปลี่ยนได้ |

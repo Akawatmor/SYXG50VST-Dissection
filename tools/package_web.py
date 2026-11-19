@@ -3,11 +3,14 @@ from pathlib import Path
 import hashlib
 import json
 import zipfile
+import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
-target = ROOT / 'build/syxg50-web.zip'
+parser = argparse.ArgumentParser()
+parser.add_argument('--output', default='build/syxg50-web.zip')
+target = ROOT / parser.parse_args().output
 files = [(path, path.relative_to(ROOT).as_posix()) for path in sorted((ROOT/'web').rglob('*')) if path.is_file() and (path.suffix != '.bmp') and (path.parent.name != 'assets' or path.name == 'resource-111.png')]
-for name in ['build/syxg_core.wasm','tools/serve_web.py','Start S-YXG50.cmd','port/README.md','analysis/PHASE_6_7_REPORT.md']:
+for name in ['build/syxg_core.wasm','tools/serve_web.py','Start S-YXG50.cmd','port/README.md','analysis/PHASE_6_7_REPORT.md','analysis/mix-fix/REPORT.md','analysis/mix-fix/results.json']:
     files.append((ROOT/name,'README.md' if name=='port/README.md' else name))
 for name in ['sxgbin41.tbl','Sxgwave4.tbl']:
     files.append((ROOT/'dll/legacy'/name,'dll/legacy/'+name))

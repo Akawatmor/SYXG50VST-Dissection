@@ -1,4 +1,6 @@
 #include "syxg_core.h"
+#include "syxg_veg_envelope.h"
+#include "syxg_veg_rates.inc"
 
 #define BANK_CAPACITY 145014u
 #define WAVE_CAPACITY 4299476u
@@ -43,6 +45,13 @@ typedef struct {
     double filter_state2;
     double attack_gain;
     double decay_multiplier;
+    double reverb_send;
+    double chorus_send;
+    uint32_t choked;
+    Envelope veg_envelope;
+    uint32_t veg_parameters[4];
+    uint32_t veg_enabled,veg_second_sent,veg_release_sent;
+    uint32_t veg_release_rate,veg_second_rate,veg_second_target;
 } Layer;
 
 typedef struct {
@@ -72,6 +81,8 @@ static uint32_t voice_age;
 static float master_volume = 0.8f;
 static uint32_t effects_enabled = 1;
 static uint32_t reset_mode = 1;
+static uint32_t render_phase,control_frames,control_ticks;
+static const int32_t (*veg_rate_tables)[128];
 static uint8_t sysex_buffer[1024];
 static void reset_effects(void);
 
@@ -172,6 +183,7 @@ int sxg_probe_oscillator8(uint32_t base, int32_t loop_end, uint32_t loop_fractio
 }
 
 void sxg_reset(void) {
+    render_phase = control_frames = control_ticks = 0;
     for (uint32_t index = 0; index < MAX_VOICES; ++index) {
         layers[index].active = 0;
     }
@@ -227,6 +239,7 @@ int sxg_init(uint32_t bank_size, uint32_t wave_size, uint32_t sample_rate) {
     }
     loaded_wave_size = wave_size;
     output_rate = sample_rate;
+    veg_rate_tables = sample_rate == 44100 ? veg_rates_44100 : sample_rate == 48000 ? veg_rates_48000 : 0;
     initialized = 1;
     return SXG_OK;
 }

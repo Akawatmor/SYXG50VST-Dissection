@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 // Small offline x86 host. Loads the supplied DLL unchanged; no audio device or GUI.
-class ReferenceHost {
+partial class ReferenceHost {
+    static partial void CaptureVegEnvelope(IntPtr module, IntPtr core, string prefix);
+    static partial void TraceVegVoices(IntPtr module,IntPtr core,string prefix,int frame);
     [DllImport("kernel32.dll", CharSet=CharSet.Unicode, SetLastError=true)] static extern IntPtr LoadLibraryW(string path);
     [DllImport("kernel32.dll", CharSet=CharSet.Ansi)] static extern IntPtr GetProcAddress(IntPtr module, string name);
     [DllImport("kernel32.dll")] static extern bool FreeLibrary(IntPtr module);
@@ -51,6 +53,8 @@ class ReferenceHost {
         return result;
     }
     static void Midi(Callback d, IntPtr e, int status, int a, int b, int delta) {
+        string channelOverride=Environment.GetEnvironmentVariable("SYXG_REFERENCE_CHANNEL");
+        if(!String.IsNullOrEmpty(channelOverride))status=(status&0xF0)|(int.Parse(channelOverride)-1);
         byte[] data=new byte[32];
         Buffer.BlockCopy(BitConverter.GetBytes(1),0,data,0,4);
         Buffer.BlockCopy(BitConverter.GetBytes(32),0,data,4,4);
@@ -140,7 +144,7 @@ class ReferenceHost {
             Dispatch(dispatcher,effect,11,0,block,IntPtr.Zero,0);
             Dispatch(dispatcher,effect,2,0,0,IntPtr.Zero,0);
             if(mode=="probe") return 0;
-            if(mode!="note" && mode!="hold" && mode!="silence") throw new ArgumentException("Unknown mode");
+            if(mode!="note" && mode!="hold" && mode!="silence" && mode!="sequence") throw new ArgumentException("Unknown mode");
             if(numIn!=0 || numOut!=2) throw new Exception("This reference recorder expects a stereo instrument with zero inputs");
             bool replacing=(flags&16)!=0 && Marshal.ReadIntPtr(effect,80)!=IntPtr.Zero;
             if(args.Length>9) replacing=args[9]=="replacing";
@@ -150,17 +154,35 @@ class ReferenceHost {
             channels=new IntPtr[2]; outputs=Marshal.AllocHGlobal(8);
             for(int i=0;i<2;i++) { channels[i]=Marshal.AllocHGlobal(block*4); Marshal.WriteIntPtr(outputs,i*4,channels[i]); }
             Dispatch(dispatcher,effect,12,0,1,IntPtr.Zero,0); resumed=true;
-            Midi(dispatcher,effect,0xB0,0,0,0); Midi(dispatcher,effect,0xB0,32,0,0); Midi(dispatcher,effect,0xC0,program,0,0);
+            if(mode!="sequence") {Midi(dispatcher,effect,0xB0,0,0,0); Midi(dispatcher,effect,0xB0,32,0,0); Midi(dispatcher,effect,0xC0,program,0,0);}
             int total=rate*4, on=((rate/4)/128)*128+offset, off=((rate*5/4)/128)*128+offset;
+            List<int[]> sequence=new List<int[]>(); int eventIndex=0;
+            if(mode=="sequence") {
+                if(args.Length<11) throw new ArgumentException("sequence requires an event TSV at argument 11");
+                foreach(string row in File.ReadAllLines(args[10])) {
+                    if(row.Trim().Length==0)continue;
+                    string[] fields=row.Split('\t');if(fields.Length!=4)throw new ArgumentException("Invalid event row");
+                    int[] item=Array.ConvertAll(fields,int.Parse);
+                    if(item[0]<0||item[1]<128||item[1]>239||item[2]<0||item[2]>127||item[3]<0||item[3]>127)throw new ArgumentException("Invalid sequence event");
+                    if(sequence.Count>0&&item[0]<sequence[sequence.Count-1][0])throw new ArgumentException("Events must be ordered");
+                    sequence.Add(item);
+                }
+                if(sequence.Count>0)total=sequence[sequence.Count-1][0]+rate*4;
+            }
             Log("schedule noteOn="+on+" noteOff="+off+" total="+total);
             float[] pcm=new float[total*2], left=new float[block], right=new float[block], zeros=new float[block];
             for(int pos=0;pos<total;pos+=block) {
                 samplePosition=pos; int n=Math.Min(block,total-pos);
-                if(mode!="silence" && on>=pos && on<pos+n) Midi(dispatcher,effect,0x90,note,velocity,on-pos);
+                if(mode!="silence" && mode!="sequence" && on>=pos && on<pos+n) Midi(dispatcher,effect,0x90,note,velocity,on-pos);
                 if(mode=="note" && off>=pos && off<pos+n) Midi(dispatcher,effect,0x80,note,0,off-pos);
+                while(eventIndex<sequence.Count&&sequence[eventIndex][0]<pos+n){int[] item=sequence[eventIndex++];Midi(dispatcher,effect,item[1],item[2],item[3],item[0]-pos);}
                 FlushMidi(dispatcher,effect);
                 for(int c=0;c<2;c++) Marshal.Copy(zeros,0,channels[c],block);
                 render(effect,IntPtr.Zero,outputs,n);
+                if(Environment.GetEnvironmentVariable("SYXG_VEG_TRACE")=="1")
+                    TraceVegVoices(module,Marshal.ReadIntPtr(Marshal.ReadIntPtr(Marshal.ReadIntPtr(effect,64),0xB0),8),prefix,pos);
+                if(Environment.GetEnvironmentVariable("SYXG_VEG_ENVELOPE")=="1" && pos>=on && pos<on+block)
+                    CaptureVegEnvelope(module, Marshal.ReadIntPtr(Marshal.ReadIntPtr(Marshal.ReadIntPtr(effect,64),0xB0),8),prefix);
                 FreeEvents();
                 Marshal.Copy(channels[0],left,0,n); Marshal.Copy(channels[1],right,0,n);
                 for(int i=0;i<n;i++) { pcm[(pos+i)*2]=left[i]; pcm[(pos+i)*2+1]=right[i]; }

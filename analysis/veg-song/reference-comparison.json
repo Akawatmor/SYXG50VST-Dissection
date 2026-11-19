@@ -1,0 +1,11 @@
+{
+  "veg_repeat_bit_identical": true,
+  "legacy_veg_song_bit_identical": false,
+  "frames": 7155225,
+  "sample_rate": 44100,
+  "sha256_pcm": [
+    "372bcaa3a4977ed040eac507cd464a93cc16c6101a210bbe63be65c5848f40fb",
+    "372bcaa3a4977ed040eac507cd464a93cc16c6101a210bbe63be65c5848f40fb",
+    "fb01bbbc6d80369eb680da80abf0b933972602cc1032fe651574190cf649c64a"
+  ]
+}

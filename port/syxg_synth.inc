@@ -4,6 +4,7 @@
 static float reverb_delay[4][REVERB_SIZE];
 static float chorus_delay[CHORUS_SIZE];
 static uint32_t reverb_position[4];
+static double reverb_damped[4];
 static uint32_t chorus_position;
 static double chorus_phase;
 static double modulation_phase;
@@ -11,6 +12,7 @@ static double modulation_phase;
 static void reset_effects(void) {
     for (uint32_t tap = 0; tap < 4; ++tap) {
         reverb_position[tap] = 0;
+        reverb_damped[tap] = 0;
         for (uint32_t index = 0; index < REVERB_SIZE; ++index) reverb_delay[tap][index] = 0;
     }
     for (uint32_t index = 0; index < CHORUS_SIZE; ++index) chorus_delay[index] = 0;
@@ -27,6 +29,27 @@ static double bend_factor(const Channel *channel) {
     double range = channel->bend_semitones + channel->bend_cents / 100.0;
     double bend = ((int32_t)channel->pitch_bend - 8192) / 8192.0;
     return power_of_two((bend * range + channel->transpose) / 12.0);
+}
+
+static uint32_t veg_clamp_rate(int rate,int minimum) {
+    if(rate<minimum)rate=minimum;
+    if(rate>63)rate=63;
+    return (uint32_t)rate*2;
+}
+
+static void veg_start_envelope(Layer *layer,uint32_t attack,uint32_t decay,uint32_t target,
+                               uint32_t release,uint32_t second,uint32_t second_target) {
+    if(!veg_rate_tables)return;
+    layer->veg_enabled=1;
+    layer->veg_envelope.flags=3;
+    layer->veg_parameters[0]=attack^128u;
+    layer->veg_parameters[1]=attack&128u?0:255;
+    layer->veg_parameters[2]=decay;
+    layer->veg_parameters[3]=target;
+    layer->veg_release_rate=release;
+    layer->veg_second_rate=second;
+    layer->veg_second_target=second_target;
+    sxg_veg_env_init(&layer->veg_envelope,veg_rate_tables,layer->veg_parameters);
 }
 
 static int select_prevoice(const Channel *channel, uint32_t *segment, uint32_t *offset) {
@@ -80,6 +103,8 @@ static int configure_sample(Layer *layer, uint32_t base, uint32_t before_loop, u
     layer->receive_note_off = 1;
     layer->active = 1;
     layer->pan = 0.5;
+    layer->reverb_send = 1;
+    layer->chorus_send = 1;
     return SXG_OK;
 }
 
@@ -95,8 +120,18 @@ static int configure_element(Layer *layer, const uint8_t *element, uint32_t note
         record += 16;
     }
     layer->record_offset = record;
-    return configure_sample(layer, read_be24(wave + 9), read_be24(wave + 3), read_be24(wave + 6),
+    int result = configure_sample(layer, read_be24(wave + 9), read_be24(wave + 3), read_be24(wave + 6),
                             wave[12], (int8_t)wave[1], (int8_t)wave[2], (int)note, velocity);
+    if(!result){
+        /* VEG 15770: key-rate scaling truncates toward zero, then stores int8. */
+        int scaling=(int8_t)(((int)note-element[0x43])*((int)element[0x42]-64)*16/256);
+        uint32_t attack=element[0x45]?element[0x45]*2u:8u;
+        if(attack==126)attack=255;
+        veg_start_envelope(layer,attack,veg_clamp_rate((int8_t)(element[0x46]+scaling),1),
+            (uint8_t)(-2*(element[0x49]+1)),veg_clamp_rate(element[0x48]+scaling,1),
+            veg_clamp_rate(element[0x47]+scaling,0),(uint8_t)(-2*(element[0x4a]+1)));
+    }
+    return result;
 }
 
 static uint32_t allocate_voice(void) {
@@ -139,8 +174,29 @@ static int configure_drum(Layer *layer, const Channel *channel, uint32_t note, u
     layer->exclusive_group = drum[3];
     layer->pan = drum[4] ? drum[4] / 127.0 : 0.5;
     layer->gain *= drum[2] / 127.0;
+    /* Original FUN_10016620 scales part sends by drum record bytes 5/6. */
+    layer->reverb_send = drum[5] / 128.0;
+    layer->chorus_send = drum[6] / 128.0;
     layer->receive_note_off = drum[9] != 0;
-    layer->decay_multiplier = power_of_two(-1.0 / (output_rate * ((note == 42 || note == 44 || note == 46) ? 0.08 : 0.45)));
+    if(drum[16]!=0){
+        /* VEG 139A0 defaults, 12310 + 124F0; neutral per-note edits are 64. */
+        uint32_t attack=((drum[13]>>1)*2u)+33u;
+        if(attack<32)attack=32;
+        if(attack<128){
+            if(attack==127)attack=255;
+            veg_start_envelope(layer,attack,drum[14],4,
+                veg_clamp_rate(drum[15]>>1,0),veg_clamp_rate(drum[15]>>1,0),255);
+        }else{
+            attack=(uint8_t)(126u-attack);
+            veg_start_envelope(layer,attack,drum[15],255,
+                veg_clamp_rate(drum[15]>>1,0),veg_clamp_rate(drum[15]>>1,0),255);
+            layer->veg_second_sent=1;
+        }
+    }
+    /* One-shot samples already contain their acoustic decay. Looped percussion
+       still needs a provisional envelope until the original AEG is recovered. */
+    double decay = note == 42 || note == 44 ? 0.02 : note == 46 ? 0.10 : 0.18;
+    layer->decay_multiplier = layer->looping ? power_of_two(-1.0 / (output_rate * decay)) : 0;
     return SXG_OK;
 }
 
@@ -178,7 +234,10 @@ static int note_on(uint32_t channel_number, uint32_t note, uint32_t velocity) {
     for (uint32_t index = 0; index < count; ++index) {
         if (pending[index].exclusive_group) {
             for (uint32_t old = 0; old < MAX_VOICES; ++old) {
-                if (layers[old].channel == channel_number && layers[old].exclusive_group == pending[index].exclusive_group) layers[old].releasing = 1;
+                if (layers[old].channel == channel_number && layers[old].exclusive_group == pending[index].exclusive_group) {
+                    layers[old].releasing = 1;
+                    layers[old].choked = 1;
+                }
             }
         }
         uint32_t slot = allocate_voice();
@@ -221,7 +280,7 @@ static int controller(uint32_t number, uint32_t control, uint32_t value) {
         channel->sustain = value >= 64;
         if (!channel->sustain) {
             for (uint32_t index = 0; index < MAX_VOICES; ++index) {
-                if (layers[index].channel == number && !layers[index].key_down) layers[index].releasing = 1;
+                if (layers[index].channel == number && !layers[index].key_down && layers[index].receive_note_off) layers[index].releasing = 1;
             }
         }
         break;
@@ -365,7 +424,7 @@ static double sample_at(const Layer *layer, uint32_t frame) {
     return ((int32_t)(read_le16(wave_data + address) ^ 0x5C5Cu) - 32768) / 32768.0;
 }
 
-static void process_effects(double reverb_send, double chorus_send, double *left, double *right) {
+static void process_effects(double reverb_send, double chorus_send, double damping, double *left, double *right) {
     static const uint32_t delay_ms[4] = {31, 37, 41, 43};
     double wet[4];
     for (uint32_t tap = 0; tap < 4; ++tap) {
@@ -373,11 +432,12 @@ static void process_effects(double reverb_send, double chorus_send, double *left
         if (length >= REVERB_SIZE) length = REVERB_SIZE-1;
         uint32_t position = reverb_position[tap];
         wet[tap] = reverb_delay[tap][position];
-        reverb_delay[tap][position] = (float)(reverb_send * 0.18 + wet[tap] * (0.76 - tap * 0.025));
+        reverb_damped[tap] += damping * (wet[tap] - reverb_damped[tap]);
+        reverb_delay[tap][position] = (float)(reverb_send * 0.10 + reverb_damped[tap] * (0.65 - tap * 0.025));
         reverb_position[tap] = position + 1 >= length ? 0 : position + 1;
     }
-    *left += (wet[0] + wet[2]) * 0.32;
-    *right += (wet[1] + wet[3]) * 0.32;
+    *left += (wet[0] + wet[2]) * 0.18;
+    *right += (wet[1] + wet[3]) * 0.18;
     chorus_phase += 0.45 / output_rate;
     if (chorus_phase >= 1) chorus_phase -= 1;
     double triangle = chorus_phase < 0.5 ? chorus_phase * 4 - 1 : 3 - chorus_phase * 4;
@@ -385,17 +445,49 @@ static void process_effects(double reverb_send, double chorus_send, double *left
     if (offset > CHORUS_SIZE - 2) offset = CHORUS_SIZE - 2;
     uint32_t delay = (uint32_t)offset;
     uint32_t read = (chorus_position + CHORUS_SIZE - delay) % CHORUS_SIZE;
+    double fraction = offset - delay;
     chorus_delay[chorus_position] = (float)chorus_send;
-    *left += chorus_delay[read] * 0.22;
-    *right += chorus_delay[(read + 17) % CHORUS_SIZE] * 0.22;
+    /* Fractional delay avoids one-sample jumps on bright drum transients. */
+    uint32_t previous = (read + CHORUS_SIZE - 1) % CHORUS_SIZE;
+    *left += (chorus_delay[read] * (1-fraction) + chorus_delay[previous] * fraction) * 0.14;
+    read = (read + 17) % CHORUS_SIZE;
+    previous = (read + CHORUS_SIZE - 1) % CHORUS_SIZE;
+    *right += (chorus_delay[read] * (1-fraction) + chorus_delay[previous] * fraction) * 0.14;
     chorus_position = (chorus_position + 1) % CHORUS_SIZE;
 }
 
 int sxg_render(uint32_t frames) {
     if (!initialized) return SXG_NOT_INITIALIZED;
     if (!frames || frames > OUTPUT_FRAMES) return SXG_BAD_ARGUMENT;
-    double release = power_of_two(-1.0 / (output_rate * 0.08));
+    double release = power_of_two(-1.0 / (output_rate * 0.035));
+    double choke = power_of_two(-1.0 / (output_rate * 0.003));
+    double damping = 1.0 - power_of_two(-6000.0 / output_rate);
     for (uint32_t frame = 0; frame < frames; ++frame) {
+        int control_tick=0;
+        if(render_phase==0){
+            control_frames+=128;
+            if(control_frames>=output_rate/100){
+                control_frames-=output_rate/100;control_tick=(++control_ticks&1u)==0;
+            }
+        }
+        for(uint32_t index=0;index<MAX_VOICES;index++){
+            Layer *layer=layers+index;
+            if(!layer->active||!layer->veg_enabled)continue;
+            if(layer->releasing&&!layer->veg_release_sent){
+                layer->veg_parameters[2]=layer->choked?254:layer->veg_release_rate|128u;
+                layer->veg_parameters[3]=255;
+                sxg_veg_env_update(&layer->veg_envelope,veg_rate_tables,layer->veg_parameters);
+                layer->veg_release_sent=1;
+            }else if(control_tick&&!layer->releasing&&!layer->veg_second_sent&&
+                     layer->veg_envelope.state>=3&&!(layer->veg_envelope.flags&0x2000)){
+                layer->veg_parameters[2]=layer->veg_second_rate;
+                layer->veg_parameters[3]=layer->veg_second_target;
+                sxg_veg_env_update(&layer->veg_envelope,veg_rate_tables,layer->veg_parameters);
+                layer->veg_second_sent=1;
+            }
+            if(render_phase==0)sxg_veg_env_tick_render(&layer->veg_envelope);
+            if(layer->veg_envelope.flags&0x1000)layer->active=0;
+        }
         double left = 0, right = 0, reverb_send = 0, chorus_send = 0;
         modulation_phase += 5.0 / output_rate;
         if (modulation_phase >= 1) modulation_phase -= 1;
@@ -418,30 +510,34 @@ int sxg_render(uint32_t frames) {
             layer->filter_state2 += cutoff * (layer->filter_state - layer->filter_state2);
             layer->attack_gain += 1.0 / (output_rate * 0.002);
             if (layer->attack_gain > 1) layer->attack_gain = 1;
-            double amplitude = layer->gain * layer->release_gain * layer->attack_gain * channel->volume * channel->expression / (127.0 * 127.0);
+            double envelope=layer->release_gain*layer->attack_gain;
+            if(layer->veg_enabled)envelope=layer->veg_envelope.gain+
+                ((double)layer->veg_envelope.next-layer->veg_envelope.gain)*render_phase/128.0;
+            double amplitude = layer->gain * envelope * channel->volume * channel->expression / (127.0 * 127.0);
             sample = -layer->filter_state2 * amplitude;
             double pan = layer->pan + ((int)channel->pan - 64) / 127.0;
             if (pan < 0) pan = 0;
             if (pan > 1) pan = 1;
             left += sample * (1-pan);
             right += sample * pan;
-            reverb_send += sample * channel->reverb / 127.0;
-            chorus_send += sample * channel->chorus / 127.0;
+            /* Match the center-panned dry level before feeding the wet buses. */
+            reverb_send += sample * 0.5 * layer->reverb_send * channel->reverb / 127.0;
+            chorus_send += sample * 0.5 * layer->chorus_send * channel->chorus / 127.0;
             layer->position += layer->step * (1 + vibrato * channel->modulation / 127.0 * 0.012);
             while (layer->position >= layer->sample_count) {
                 if (!layer->looping) { layer->active = 0; break; }
                 layer->position -= layer->sample_count - layer->loop_start;
                 layer->position += layer->loop_fraction / 32768.0;
             }
-            if (layer->releasing) {
-                layer->release_gain *= release;
-                if (layer->release_gain < 1e-7) layer->active = 0;
-            } else if (layer->decay_multiplier > 0) {
-                layer->release_gain *= layer->decay_multiplier;
-                if (layer->release_gain < 1e-7) layer->active = 0;
+            if (!layer->veg_enabled && layer->releasing) {
+                layer->release_gain *= layer->choked ? choke : release;
             }
+            if (!layer->veg_enabled && layer->decay_multiplier > 0) {
+                layer->release_gain *= layer->decay_multiplier;
+            }
+            if (layer->release_gain < 1e-7) layer->active = 0;
         }
-        if (effects_enabled) process_effects(reverb_send, chorus_send, &left, &right);
+        if (effects_enabled) process_effects(reverb_send, chorus_send, damping, &left, &right);
         left *= master_volume; right *= master_volume;
         if (left > 1) left = 1;
         if (left < -1) left = -1;
@@ -449,6 +545,7 @@ int sxg_render(uint32_t frames) {
         if (right < -1) right = -1;
         output[frame*2] = (float)left;
         output[frame*2+1] = (float)right;
+        render_phase=(render_phase+1)&127u;
     }
     return SXG_OK;
 }
@@ -467,4 +564,15 @@ uint32_t sxg_layer_info(uint32_t index, uint32_t field) {
     case 7: return layer->step_q15;
     default: return 0;
     }
+}
+
+uint32_t sxg_voice_envelope(uint32_t voice,uint32_t field){
+    if(voice>=MAX_VOICES)return 0;
+    if(field<12){
+        /* Read object representation without type-punning alias violations. */
+        const uint8_t *bytes=(const uint8_t *)&layers[voice].veg_envelope;
+        return read_le32(bytes+field*4);
+    }
+    if(field<16)return layers[voice].veg_parameters[field-12];
+    return field==16?layers[voice].veg_enabled:0;
 }

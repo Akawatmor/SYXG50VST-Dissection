@@ -1,0 +1,14 @@
+{
+  "source_dll_sha256": "2f81ad9fd3fea46a950ab47486d5af721353989f54c67a6d731e29445d0f210d",
+  "original_inputs_unchanged": true,
+  "playback_updated": false,
+  "full_effect_envelope_port_complete": false,
+  "tables": {
+    "veg-44100-rate0.bin": "b29bf7b6948718231237f7bbb7eaeaef79a8e5a7968dbf4bdc8e65be1950518c",
+    "veg-44100-rate1.bin": "7d49fef3703f49b765b810bb713a976de11653fd88b6053800b88a927b0e3a25",
+    "veg-44100-rate2.bin": "988e1140f66fe87695b0b790b5a45bd69c890542257b9c82aebd5d4890da0d10",
+    "veg-48000-rate0.bin": "71e9a1cf4e9c11dcfbba4ee10ff66e0b80ba804e4136a0e61aa9c32311fe2be9",
+    "veg-48000-rate1.bin": "7a74211572a184b7118ea5ceedd2e0310abc6223d14d5063109a5a8604c73150",
+    "veg-48000-rate2.bin": "c9558195ed51c839cc5e43e014942aa780aa8b08342dea290c333c0b481849cd"
+  }
+}

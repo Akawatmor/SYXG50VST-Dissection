@@ -18,12 +18,12 @@
     "worklet_end_and_optional_telemetry": true
   },
   "passed": 16,
-  "wasm_bytes": 39026,
+  "wasm_bytes": 40580,
   "benchmark": {
     "voices": 128,
     "audio_seconds": 1,
-    "render_ms": 102.4393,
-    "realtime_factor": 0.1024393,
+    "render_ms": 91.41160000000002,
+    "realtime_factor": 0.09141160000000002,
     "environment": "Node WASM on this machine; excludes browser scheduling"
   },
   "full_dll_audio_fidelity_passed": false

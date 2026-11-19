@@ -13,7 +13,7 @@ export class SyxgSynth extends EventTarget {
     this.context = new AudioContext({ latencyHint: 'interactive', sampleRate: options.sampleRate || 48000 });
     await this.context.resume();
     try {
-      const response = await fetch(new URL('./syxg_core.wasm', import.meta.url));
+      const response = await fetch(new URL('./syxg_core.wasm', import.meta.url), { cache: 'no-store' });
       if (!response.ok) throw new Error('WASM could not be loaded. Build the project first.');
       const module = await WebAssembly.compile(await response.arrayBuffer());
       await this.context.audioWorklet.addModule(new URL('./synth-worklet.js', import.meta.url));

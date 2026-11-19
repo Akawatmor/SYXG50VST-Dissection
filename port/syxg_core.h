@@ -38,5 +38,6 @@ int sxg_set_master(float volume);
 void sxg_set_effects(uint32_t enabled);
 uint32_t sxg_active_voices(void);
 uint32_t sxg_channel_info(uint32_t channel, uint32_t field);
+uint32_t sxg_voice_envelope(uint32_t voice,uint32_t field);
 
 #endif

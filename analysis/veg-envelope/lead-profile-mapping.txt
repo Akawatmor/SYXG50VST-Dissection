@@ -1,0 +1,6 @@
+mode=1
+base=3386040
+before=0
+loop=169
+step=32752
+flags=128
